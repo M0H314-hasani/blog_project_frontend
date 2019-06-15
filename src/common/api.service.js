@@ -26,8 +26,8 @@ const ApiService = {
     });
   },
 
-  get(resource, slug = "") {
-    return Vue.axios.get(`${resource}/${slug}`).catch(error => {
+  get(resource) {
+    return Vue.axios.get(`${resource}`).catch(error => {
       throw new Error(`ApiService ${error}`);
     });
   },
@@ -36,8 +36,8 @@ const ApiService = {
     return Vue.axios.post(`${resource}`, params);
   },
 
-  update(resource, slug, params) {
-    return Vue.axios.put(`${resource}/${slug}`, params);
+  patch(resource, params) {
+    return Vue.axios.patch(`${resource}`, params);
   },
 
   put(resource, params) {
@@ -53,4 +53,4 @@ const ApiService = {
 
 export default ApiService;
 
-// TODO: Implement api services.
+//TODO: Implement api services.
