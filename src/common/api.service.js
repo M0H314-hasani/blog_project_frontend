@@ -83,6 +83,9 @@ export const UserService = {
   userCollections() {
     return ApiService.get(`user/collections`);
   },
+  userPosts() {
+    return ApiService.get(`user/posts`);
+  },
   follow(user) {
     return ApiService.get(`user/${user}/follow`);
   },
