@@ -52,49 +52,49 @@ const getters = {
 const actions = {
   [GET_CURRENT_USER](context, payload) {
     return UserService.index(payload).then(({ data }) => {
-      context.commit(SET_CURRENT_USER, data);
+      context.commit(SET_CURRENT_USER, data.data);
       return data;
     });
   },
   [UPDATE_USER_INFO](context, payload) {
     return UserService.updateUserInfo(payload).then(({ data }) => {
-      context.commit(SET_CURRENT_USER, data);
+      context.commit(SET_CURRENT_USER, data.data);
       return data;
     });
   },
   [UPLOAD_AVATAR](context, payload) {
     return UserService.uploadAvatar(payload).then(({ data }) => {
-      context.commit(SET_AVATAR, data);
+      context.commit(SET_AVATAR, data.data);
       return data;
     });
   },
   [BOOKMARKED_POSTS](context) {
     return UserService.bookmarkedPosts().then(({ data }) => {
-      context.commit(SET_BOOKMARKED_POSTS, data);
+      context.commit(SET_BOOKMARKED_POSTS, data.data);
       return data;
     });
   },
   [LIKED_POSTS](context) {
     return UserService.likedPosts().then(({ data }) => {
-      context.commit(SET_LIKED_POSTS, data);
+      context.commit(SET_LIKED_POSTS, data.data);
       return data;
     });
   },
   [FOLLOWED_COLLECTIONS](context) {
     return UserService.followedCollections().then(({ data }) => {
-      context.commit(SET_FOLLOWED_COLLECTIONS, data);
+      context.commit(SET_FOLLOWED_COLLECTIONS, data.data);
       return data;
     });
   },
   [FOLLOWERS](context) {
     return UserService.followers().then(({ data }) => {
-      context.commit(SET_FOLLOWERS, data);
+      context.commit(SET_FOLLOWERS, data.data);
       return data;
     });
   },
   [FOLLOWING](context) {
     return UserService.following().then(({ data }) => {
-      context.commit(SET_FOLLOWINGS, data);
+      context.commit(SET_FOLLOWINGS, data.data);
       return data;
     });
   }
