@@ -33,13 +33,13 @@ const getters = {
 const actions = {
   [GET_USER](context, payload) {
     return UserService.index(payload).then(({ data }) => {
-      context.commit(SET_USER, data);
+      context.commit(SET_USER, data.data);
       return data;
     });
   },
   [REGISTER](context, payload) {
     return UserService.register(payload).then(({ data }) => {
-      context.commit(SET_USER, data);
+      context.commit(SET_USER, data.data);
       return data;
     });
   },
@@ -50,13 +50,13 @@ const actions = {
   },
   [USER_FOLLOWERS](context) {
     return UserService.followers().then(({ data }) => {
-      context.commit(SET_USER_FOLLOWERS, data);
+      context.commit(SET_USER_FOLLOWERS, data.data);
       return data;
     });
   },
   [USER_FOLLOWING](context) {
     return UserService.following().then(({ data }) => {
-      context.commit(SET_USER_FOLLOWINGS, data);
+      context.commit(SET_USER_FOLLOWINGS, data.data);
       return data;
     });
   }
