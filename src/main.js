@@ -1,8 +1,16 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserSecret,
+  faAlignLeft,
+  faSpinner,
+  faCoffee,
+  faEdit
+} from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { dom } from "@fortawesome/fontawesome-svg-core";
 
 import Vue from "vue";
 import App from "./App.vue";
@@ -13,9 +21,13 @@ import { CHECK_AUTH } from "./store/actions.type";
 import ApiService from "./common/api.service";
 import ErrorFilter from "./common/error.filter";
 
+window.$ = require("jquery");
+window.JQuery = require("jquery");
+
 Vue.config.productionTip = false;
 
-library.add(faUserSecret);
+dom.watch();
+library.add(faUserSecret, faAlignLeft, faSpinner, faCoffee, faEdit);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
