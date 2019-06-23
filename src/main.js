@@ -17,7 +17,20 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import { CHECK_AUTH } from "./store/actions.type";
+import VueSweetalert2 from "vue-sweetalert2";
+
+Vue.use(VueSweetalert2);
+
+import helpers from "./common/helpers";
+const plugin = {
+  install() {
+    Vue.helpers = helpers;
+    Vue.prototype.$helpers = helpers;
+  }
+};
+Vue.use(plugin);
+
+import { CHECK_AUTH, LOAD_FLASH_MESSAGE } from "./store/actions.type";
 import ApiService from "./common/api.service";
 import ErrorFilter from "./common/error.filter";
 
@@ -39,6 +52,12 @@ ApiService.init();
 router.beforeEach((to, from, next) =>
   Promise.all([store.dispatch(CHECK_AUTH)]).then(next)
 );
+router.afterEach(() => {
+  if (store.getters.flushMessage) {
+    helpers.flushMessage(store.getters.flushMessage);
+    store.dispatch(LOAD_FLASH_MESSAGE, null);
+  }
+});
 
 new Vue({
   router,
